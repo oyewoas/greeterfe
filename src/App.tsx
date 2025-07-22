@@ -110,7 +110,6 @@ function App() {
           method: 'wallet_revokePermissions',
           params: [{ eth_accounts: {} }],
         });
-        console.log('Wallet disconnected');
         setAccount({
           address: "",
           balance: 0,
