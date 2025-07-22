@@ -87,6 +87,7 @@ body {
   background: white;
   margin-bottom: 1.5rem;
   font-family: inherit;
+  color: #333;
 }
 
 .input:focus {
