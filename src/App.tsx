@@ -104,12 +104,24 @@ function App() {
   }
 
   const handleDisconnect = async () => {
-    setAccount({
-      address: "",
-      balance: 0,
-      connected: false,
-    });
-    setError("");
+    if (window.ethereum) {
+      try {
+        await window.ethereum.request({
+          method: 'wallet_revokePermissions',
+          params: [{ eth_accounts: {} }],
+        });
+        console.log('Wallet disconnected');
+        setAccount({
+          address: "",
+          balance: 0,
+          connected: false,
+        });
+        setError("");
+      } catch (error) {
+        console.error('Failed to disconnect wallet:', error);
+        setError("Failed to disconnect wallet");
+      }
+    }
   } 
 
   const handleSet = async () => {
